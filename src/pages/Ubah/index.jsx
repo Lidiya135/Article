@@ -10,18 +10,19 @@ import Card from "../../components/card";
 
 export default function Ubah() {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
   const { id } = useParams();
+  const [inputData, setInputData] = useState({
+    id: id,
+    title: '',
+    content: ''
+  });  
   console.log(id, "my id detail");
 
   useEffect(() => {
     axios
       .get(`https://api-trials.x5.com.au/api/articles/${id}`)
       .then((res) => {
-        console.log("get data succes");
-        console.log(res.data);
-        res.data && setData(res.data);
-        console.log(data?.title, "my id dataa/ssssss");
+        setInputData({...inputData, title: res.data.data.title, content: res.data.data.content})
       })
       .catch((err) => {
         console.log("get data fail");
@@ -29,30 +30,11 @@ export default function Ubah() {
       });
   }, []);
 
-  console.log(data.title, "my id dataa");
-
-  const [inputData, setInputData] = useState({
-    title: data?.title,
-    content: data?.content,
-  });
-
-  const handleChange = (e) => {
-    setInputData({
-      ...inputData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const updateData = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", inputData.title);
-    formData.append("content", inputData.content);
     axios
-      .post(`https://api-trials.x5.com.au/api/articles/${id}`, formData, {
-        "content-type": "multipart/form-data",
-      })
-      .then((res) => {
+    .put(`https://api-trials.x5.com.au/api/articles/${id}`, inputData)
+    .then((res) => {
         console.log(res);
         Swal.fire("Success", "Post success", "success");
         navigate("/");
@@ -79,16 +61,15 @@ export default function Ubah() {
                 type="text"
                 id="title"
                 name="title"
-                onChange={(e) => handleChange(e)}
+                onChange={e => setInputData({...inputData, title: e.target.value})}
                 value={inputData.title}
-                placeholder=""
               ></input>
               <p>Content</p>
               <textarea
                 id="content"
                 name="content"
-                onChange={(e) => handleChange(e)}
-                value={inputData.name}
+                onChange={e => setInputData({...inputData, content: e.target.value})}
+                value={inputData.content}
                 type="text"
               ></textarea>
               <br />
