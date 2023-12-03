@@ -12,10 +12,16 @@ import moment from "moment/moment";
 
 export default function Daftar() {
   const [data, setData] = useState([]);
+  const [inputData, setInputData] = useState({
+    search: "",
+  });
+  const [page, setPage] = useState(1);
 
   const getData = () => {
     axios
-      .get(`https://api-trials.x5.com.au/api/articles`)
+      .get(
+        `https://api-trials.x5.com.au/api/articles?search=${inputData.search}&limit=5&page=${page}`
+      )
       .then((res) => {
         console.log("get data succes");
         console.log(res.data);
@@ -29,6 +35,29 @@ export default function Daftar() {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    getData();
+  }, [inputData.search, page]);
+
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const next = () => {
+    setPage(page + 1);
+  };
+
+  const back = () => {
+    if (page === 0) {
+      setPage((page = 1));
+    } else {
+      setPage(page - 1);
+    }
+  };
 
   const deleteData = (e, id) => {
     Swal.fire({
@@ -74,6 +103,9 @@ export default function Daftar() {
               <input
                 className={styles.bxsearch}
                 type="search"
+                value={inputData.search}
+                name="search"
+                onChange={handleChange}
                 placeholder="Type here to search"
               />
               <div className={styles.btn}>
@@ -109,6 +141,19 @@ export default function Daftar() {
               </table>
             </div>
           </div>
+
+          <div className={styles.pagination}>
+            <div className={styles.next}>
+              <button title="back" className={styles.qty} onClick={back}>
+                back
+              </button>
+              <span> Page {page} </span>
+              <button title="next" className={styles.qty} onClick={next}>
+                next
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
