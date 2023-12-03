@@ -2,21 +2,34 @@
   display: flex;
   gap: 20px;
   padding: 10px 20px;
+  font-family: sans-serif;
+}
+Link{
+  text-decoration: none;
+}
+Link a.active{
+  border-bottom: 2px solid rgb(5, 180, 5);
+  color: rgb(5, 180, 5);
 }
 .box {
-  border: 1px solid black;
   display: flex;
   padding: 10px;
   gap: 10px;
   height: 40px;
+  border-bottom: 2px solid rgb(222, 223, 222);
+  color: rgb(159, 160, 159);
 }
 .box img {
   width: 40px;
   height: 40px;
 }
 .text {
-  color: green;
+  cursor: pointer;
   line-height: 20%;
+  text-decoration: none;
+}
+.text:hover{
+  color: rgb(5, 180, 5);
 }
 .text p {
   font-size: 14px;
@@ -27,5 +40,3 @@
   font-weight: 400;
 }
 
-@media (max-width: 480px) {
-}

@@ -4,6 +4,7 @@
   align-items: center;
   height: 40px;
   margin-left: 230px;
+  /* background-color: aqua; */
 }
 .nav p {
   font-size: 24px;
@@ -11,15 +12,15 @@
   color: 171717;
 }
 .content {
+  /* background-color: antiquewhite; */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
-.notifb {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+li{
+  list-style-type: none;
 }
 .gbr {
   width: 27px;
@@ -28,39 +29,37 @@
 .profil {
   display: flex;
 }
+nav img:hover{
+  background-color: rgb(198, 201, 198);
+}
 
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
     height: auto;
     margin-left: 0px;
+    width: 40%;
+    align-items: flex-end;
   }
-
   .nav p {
-    margin-bottom: 10px;
+    font-size: 18px;
   }
-
   .content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
+    display: none;
+  }
+  .smallNav{
+    display: block;
+  }
+  .large{
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .nav {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .nav p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+@media (min-width: 768px){
+  .small{
+    display: none;
   }
 }

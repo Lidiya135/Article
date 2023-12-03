@@ -23,12 +23,10 @@ export default function Daftar() {
         `https://api-trials.x5.com.au/api/articles?search=${inputData.search}&limit=5&page=${page}`
       )
       .then((res) => {
-        console.log("get data succes");
-        console.log(res.data);
+        // console.log(res.data);
         res.data && setData(res.data.data);
       })
       .catch((err) => {
-        console.log("get data fail");
         console.log(err);
       });
   };
@@ -73,7 +71,6 @@ export default function Daftar() {
         axios
           .delete(`https://api-trials.x5.com.au/api/articles/${id}`)
           .then((res) => {
-            console.log("delete success");
             console.log(res);
             getData();
             Swal.fire({
@@ -83,7 +80,6 @@ export default function Daftar() {
             });
           })
           .catch((err) => {
-            console.log("delete fail");
             console.log(err);
           });
       }
@@ -92,68 +88,66 @@ export default function Daftar() {
 
   return (
     <div className={styles.content}>
-      <Sidebar />
-      <div>
+      <div className={styles.navSide}>
+        <Sidebar />
         <Navbar />
-        <div className={styles.boxPage}>
-          <Card />
-          <div className={styles.daftar}>
-            {/* <Card /> */}
-            <div className={styles.search}>
-              <input
-                className={styles.bxsearch}
-                type="search"
-                value={inputData.search}
-                name="search"
-                onChange={handleChange}
-                placeholder="Type here to search"
-              />
-              <div className={styles.btn}>
-                <input type="date" value="2023" className={styles.date} />
-                <Link to={`/Tambah`}>
-                  <input type="submit" value="+ Add" />
-                </Link>
-              </div>
-            </div>
-            <div className={styles.list}>
-              <table>
-                <tr>
-                  <th>Date</th>
-                  <th>Tittle</th>
-                  <th>Content</th>
-                  <th>Action</th>
-                </tr>
-                {data.articles?.map((p) => (
-                  <tbody key={p.id}>
-                    <tr>
-                      <td>{moment.utc(p.created_at).format("DD/MM/YYYY")}</td>
-                      <td>{p.title}</td>
-                      <td style={{ width: "35%" }}>{p.content}</td>
-                      <td>
-                        <Link to={`/ubah/${p.id}`}>
-                          <img src={edit} data={p} />
-                        </Link>
-                        <img src={del} onClick={(e) => deleteData(e, p.id)} />
-                      </td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
+      </div>
+      <div className={styles.boxPage}>
+        <Card />
+        <div className={styles.daftar}>
+          <div className={styles.search}>
+            <input
+              className={styles.bxsearch}
+              type="search"
+              value={inputData.search}
+              name="search"
+              onChange={handleChange}
+              placeholder="Type here to search"
+            />
+            <div className={styles.btn}>
+              <input type="year" placeholder="2023" className={styles.date} />
+              <Link to={`/Tambah`}>
+                <input type="submit" value="+ Add" />
+              </Link>
             </div>
           </div>
-
-          <div className={styles.pagination}>
-            <div className={styles.next}>
-              <button title="back" className={styles.qty} onClick={back}>
-                back
-              </button>
-              <span> Page {page} </span>
-              <button title="next" className={styles.qty} onClick={next}>
-                next
-              </button>
-            </div>
+          <div className={styles.list}>
+            <table>
+              <tbody>
+              <tr>
+                <th>Date</th>
+                <th>Tittle</th>
+                <th>Content</th>
+                <th>Action</th>
+              </tr>
+              {data.articles?.map((p) => (
+                  <tr key={p.id}>
+                    <td>{moment.utc(p.created_at).format("DD/MM/YYYY")}</td>
+                    <td>{p.title}</td>
+                    <td style={{ width: "35%" }}>{p.content}</td>
+                    <td>
+                      <Link to={`/ubah/${p.id}`}>
+                        <img src={edit} data={p} />
+                      </Link>
+                      <img src={del} onClick={(e) => deleteData(e, p.id)} />
+                    </td>
+                  </tr>
+              ))}
+              </tbody>
+            </table>
           </div>
+        </div>
 
+        <div className={styles.pagination}>
+          <div className={styles.next}>
+            <button title="back" className={styles.qty} onClick={back}>
+              back
+            </button>
+            <span> Page {page} </span>
+            <button title="next" className={styles.qty} onClick={next}>
+              next
+            </button>
+          </div>
         </div>
       </div>
     </div>

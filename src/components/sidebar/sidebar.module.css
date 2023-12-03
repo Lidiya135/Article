@@ -31,6 +31,9 @@
   font-size: 18px;
   font-weight: bold;
 }
+.logo:hover {
+  background-color: rgb(198, 201, 198);
+}
 .listMenu img {
   width: 24px;
   height: 18px;
@@ -48,10 +51,13 @@
   color: green;
   margin-left: 10px;
 }
+.listMenu:hover {
+  background-color: rgb(136, 248, 136);
+}
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 100%;
+    width: 40%;
     height: auto;
     position: relative;
   }
@@ -67,4 +73,20 @@
     align-items: flex-start;
     margin-bottom: 10px;
   }
+  .sidebarContent{
+    display: none;
+  }
+  .smallNav{
+    display: block;
+  }
+  .menu{
+    display: none;
+  }
 }
+
+@media (min-width: 768px) {
+  .menuSmall{
+    display: none;
+  }
+}
+

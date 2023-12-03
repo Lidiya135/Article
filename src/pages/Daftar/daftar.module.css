@@ -16,6 +16,8 @@
 .search .btn {
   display: flex;
   gap: 10px;
+  width: 50%;
+  justify-content: flex-end;
 }
 .bxsearch {
   height: 80%;
@@ -23,6 +25,7 @@
 }
 .btn input {
   font-weight: 600;
+  width: 80px;
   background-color: #2ecc71;
   color: #ffffff;
   padding: 8px 10px;
@@ -33,7 +36,7 @@
 }
 .search .btn .date {
   background: rgb(161, 161, 161);
-  border: 1px solid gray;
+  border: 1px solid rgb(155, 154, 154);
   color: black;
 }
 table,
@@ -55,16 +58,6 @@ td {
 tbody img {
   padding: 0px 5px;
 }
-
-@media (max-width: 768px) {
-  .daftar {
-    margin-left: 0px;
-  }
-  .boxPage{ 
-  margin-left: 0px;
-  }
-}
-
 .pagination{
   display: flex;
   gap: 200px;
@@ -83,5 +76,23 @@ tbody img {
 }
 span{
   text-align: center;
-
 }
+
+@media (max-width: 768px) {
+  .daftar {
+    margin-left: 0px;
+  }
+  .btn input{
+    width: 50px;
+  }
+  .navSide{
+    padding-left: 10px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .boxPage{ 
+  margin-left: 0px;
+  }
+}
+

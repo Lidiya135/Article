@@ -14,12 +14,10 @@ export default function Tambah() {
     axios
       .get(`https://api-trials.x5.com.au/api/articles`)
       .then((res) => {
-        console.log("get data succes");
-        console.log(res.data);
+        // console.log(res.data);
         res.data && setData(res.data.data);
       })
       .catch((err) => {
-        console.log("get data fail");
         console.log(err);
       });
   };
@@ -28,7 +26,6 @@ export default function Tambah() {
   }, []);
 
   const datas = data.article;
-  console.log(datas, "ppppppppppp");
 
   const [inputData, setInputData] = useState({
     title: datas?.title,
@@ -64,37 +61,37 @@ export default function Tambah() {
 
   return (
     <div className={styles.content}>
-      <Sidebar />
-      <div>
+      <div className={styles.navSide}>
+        <Sidebar />
         <Navbar />
-        <div className={styles.boxPage}>
-          <Card />
-          <div className={styles.contentTambah}>
-            <h3>Add</h3>
-            <hr />
-            <form onSubmit={postData}>
-              <p>Tittle</p>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                onChange={(e) => handleChange(e)}
-                value={inputData.title}
-                placeholder="Type Your Title"
-              ></input>
-              <p>Content</p>
-              <textarea
-                id="content"
-                name="content"
-                onChange={(e) => handleChange(e)}
-                value={inputData.name}
-                placeholder="Type your Content"
-                type="text"
-              ></textarea>
-              <br />
-              <button type="submit">Save</button>
-            </form>
-          </div>
+      </div>
+      <div className={styles.boxPage}>
+        <Card />
+        <div className={styles.contentTambah}>
+          <h3>Add</h3>
+          <hr />
+          <form onSubmit={postData}>
+            <p>Tittle</p>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              onChange={(e) => handleChange(e)}
+              value={inputData.title}
+              placeholder="Type Your Title"
+            ></input>
+            <p>Content</p>
+            <textarea
+              id="content"
+              name="content"
+              onChange={(e) => handleChange(e)}
+              value={inputData.name}
+              placeholder="Type your Content"
+              type="text"
+            ></textarea>
+            <br />
+            <button type="submit">Save</button>
+          </form>
         </div>
       </div>
     </div>
