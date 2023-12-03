@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+}
+.box {
+  border: 1px solid black;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  height: 40px;
+}
+.box img {
+  width: 40px;
+  height: 40px;
+}
+.text {
+  color: green;
+  line-height: 20%;
+}
+.text p {
+  font-size: 14px;
+  font-weight: 600;
+}
+.text span {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+}

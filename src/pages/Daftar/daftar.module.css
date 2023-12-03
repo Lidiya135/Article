@@ -1,0 +1,63 @@
+.boxPage {
+  background-color: rgb(239, 245, 237);
+}
+.daftar {
+  margin-left: 220px;
+  padding: 5px 20px;
+}
+.search {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  padding: 10px 0px;
+}
+.search .btn {
+  display: flex;
+  gap: 10px;
+}
+.bxsearch {
+  height: 80%;
+  width: 50%;
+}
+.btn input {
+  font-weight: 600;
+  background-color: #2ecc71;
+  color: #ffffff;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.search .btn .date {
+  background: rgb(161, 161, 161);
+  border: 1px solid gray;
+  color: black;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  border-spacing: 0;
+  padding: 5px;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+.list table {
+  width: 100%;
+}
+.list table td {
+  width: 20%;
+}
+tbody img {
+  padding: 0px 5px;
+}
+
+@media (max-width: 768px) {
+  .daftar {
+    margin-left: 0px;
+  }
+}
