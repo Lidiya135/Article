@@ -18,9 +18,9 @@ export default function Daftar() {
   const [page, setPage] = useState(1);
 
   const getData = () => {
-    axios
+    axios 
       .get(
-        `https://api-trials.x5.com.au/api/articles?search=${inputData.search}&limit=5&page=${page}`
+        `https://api-trials.x5.com.au/api/articles?search=${inputData.search}&page_size=1&page=${page}`
       )
       .then((res) => {
         // console.log(res.data);
