@@ -20,7 +20,7 @@ export default function Daftar() {
   const getData = () => {
     axios 
       .get(
-        `https://api-trials.x5.com.au/api/articles?search=${inputData.search}&page_size=1&page=${page}`
+        `https://api-trials.x5.com.au/api/articles?search=${inputData.search}&page_size=5&page=${page}`
       )
       .then((res) => {
         // console.log(res.data);
