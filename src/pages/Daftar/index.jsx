@@ -120,7 +120,7 @@ export default function Daftar() {
                 <th>Content</th>
                 <th>Action</th>
               </tr>
-              {data.articles?.map((p) => (
+              {data.articles?.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).map((p) => (
                   <tr key={p.id}>
                     <td>{moment.utc(p.created_at).format("DD/MM/YYYY")}</td>
                     <td>{p.title}</td>
